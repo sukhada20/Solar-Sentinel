@@ -35,41 +35,24 @@ Solar Sentinel is a Flask-based web application that helps users monitor **real-
 
 ---
 
-## 📦 Project Structure
-solar-sentinel/
-│
-├── app.py # Flask app entry point
-├── requirements.txt # Dependencies
-├── Procfile # Render deployment instruction
-├── runtime.txt # Python version (3.12.9)
-├── .env # Environment variables (not committed)
-│
-├── templates/
-│ ├── index.html
-│ └── partials/content.html
-│
-├── static/
-│ ├── styles.css
-│ └── script.js
-│
-└── README.md # You are here!
-
----
-
 ## 🧪 Local Development
 ### 1. Clone the repository
 git clone https://github.com/your-username/solar-sentinel.git
+
 cd solar-sentinel
 ### 2. Create a virtual environment
 python -m venv venv
+
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 ### 3. Install dependencies
 pip install -r requirements.txt
 ### 4. Set up .env
 Create a .env file and add your OpenUV API Key
+
 OPENUV_API_KEY=your_openuv_key_here
 ### 5. Run the app
 python app.py
+
 Then open your browser at http://localhost:5000
 
 ---
@@ -87,16 +70,16 @@ Then open your browser at http://localhost:5000
 ---
 
 ## 📌 Known Issues
-🌅 Sunrise/sunset card is partially implemented :( 
-🌎 Currently limited to a few predefined cities
-🧴 No Predictions were added
+- 🌅 Sunrise/sunset card is partially implemented :( 
+- 🌎 Currently limited to a few predefined cities
+- 🧴 No Predictions were added
 
 --- 
 
 ## 🧠 Credits
-OpenUV API — real-time UV index
-Chart.js — charts
-TailwindCSS — responsive styling
+- OpenUV API — real-time UV index
+- Chart.js — charts
+- TailwindCSS — responsive styling
 
 --- 
 
