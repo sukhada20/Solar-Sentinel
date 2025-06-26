@@ -1,0 +1,521 @@
+<div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row justify-between items-center mb-8">
+        <div class="flex items-center mb-4 md:mb-0">
+            <svg class="w-10 h-10 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+            </svg>
+            <h1 class="text-2xl font-bold">Solar-Sentinel</h1>
+        </div>
+        <div class="relative">
+            <select id="locationSelector" class="bg-white bg-opacity-20 text-white rounded-lg px-4 py-2 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-white">
+                <option value="new-york">New York</option>
+                <option value="nagpur">Nagpur</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="delhi">Delhi</option>
+                <option value="london">London</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="flex border-b border-white border-opacity-30 mb-6 overflow-x-auto">
+        <button class="tab active px-4 py-2 focus:outline-none whitespace-nowrap" data-tab="dashboard">Dashboard</button>
+        <button class="tab px-4 py-2 focus:outline-none whitespace-nowrap" data-tab="protection">Protection Guide</button>
+        <button class="tab px-4 py-2 focus:outline-none whitespace-nowrap" data-tab="quiz">Skin Type Quiz</button>
+        <button class="tab px-4 py-2 focus:outline-none whitespace-nowrap" data-tab="reminder">Reminder</button>
+    </div>
+
+    <!-- Dashboard Tab Content -->
+    <div id="dashboard" class="tab-content active">
+        <div class="card p-6 mb-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 md:mr-6">
+                    <h2 class="text-3xl font-bold mb-1">Current UV Index</h2>
+                    <p class="text-lg opacity-80" id="current-date">July 15, 2023 • 12:30 PM</p>
+                    <div class="mt-8">
+                        <div class="flex justify-between mb-2 text-sm">
+                            <span>Low</span>
+                            <span>Moderate</span>
+                            <span>High</span>
+                            <span>Very High</span>
+                            <span>Extreme</span>
+                        </div>
+                        <div class="uv-meter relative mb-8">
+                            <div class="uv-indicator" id="uv-indicator" style="left: 60%;"></div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span class="text-5xl font-bold" id="uv-value">8</span>
+                            <p class="text-xl font-medium mt-1" id="uv-category">High</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg w-full md:w-auto">
+                    <h3 class="text-xl font-semibold mb-4">Today's Recommendations</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-400 rounded-full p-2 mr-3">
+                                <svg class="w-6 h-6 text-yellow-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Recommended SPF</p>
+                                <p class="text-xl font-bold">SPF 30+</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-orange-400 rounded-full p-2 mr-3">
+                                <svg class="w-6 h-6 text-orange-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Reapply Sunscreen</p>
+                                <p class="text-xl font-bold">Every 2 Hours</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-red-400 rounded-full p-2 mr-3">
+                                <svg class="w-6 h-6 text-red-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Avoid Sun</p>
+                                <p class="text-xl font-bold">10 AM - 4 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Sun Hours</h3>
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 mr-3 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div>
+                            <p class="opacity-80">Sunrise</p>
+                            <p class="text-xl font-semibold">5:45 AM</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 mr-3 text-orange-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <div>
+                            <p class="opacity-80">Sunset</p>
+                            <p class="text-xl font-semibold">8:15 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-4 mt-4">
+                    <div class="h-12 bg-gradient-to-r from-indigo-900 via-yellow-400 to-indigo-900 rounded-lg relative">
+                        <div class="absolute top-0 left-0 h-full w-full flex items-center justify-between px-4">
+                            <span class="text-xs">5:45 AM</span>
+                            <span class="text-xs">8:15 PM</span>
+                        </div>
+                        <div class="absolute h-full w-1 bg-white" style="left: 30%;"></div>
+                    </div>
+                    <p class="text-center mt-2 text-sm">Current time: 12:30 PM</p>
+                </div>
+            </div>
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">UV Forecast Today</h3>
+                <canvas id="uvChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Protection Guide Tab Content -->
+    <div id="protection" class="tab-content">
+        <div class="card p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4">UV Protection Guide</h2>
+            <p class="mb-6">Understanding how to protect yourself from harmful UV rays is essential for preventing skin damage, premature aging, and reducing the risk of skin cancer.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-yellow-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-yellow-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold">Sunscreen Guide</h3>
+                    </div>
+                    <ul class="ml-6 list-disc space-y-2">
+                        <li>Use broad-spectrum sunscreen with SPF 30+ for everyday use</li>
+                        <li>Apply 15-30 minutes before sun exposure</li>
+                        <li>Use approximately 1 oz (a shot glass full) for full body coverage</li>
+                        <li>Reapply every 2 hours, or after swimming/sweating</li>
+                        <li>Don't forget often-missed areas: ears, back of neck, tops of feet</li>
+                    </ul>
+                </div> 
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path>
+                                <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold">Protective Clothing</h3>
+                    </div>
+                    <ul class="ml-6 list-disc space-y-2">
+                        <li>Wear wide-brimmed hats (at least 3 inches all around)</li>
+                        <li>Choose UPF-rated clothing when possible</li>
+                        <li>Opt for long sleeves and pants in lightweight fabrics</li>
+                        <li>Wear UV-blocking sunglasses that wrap around</li>
+                        <li>Consider sun protective swimwear for extended water activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>       
+        <div class="card p-6 mb-6">
+            <h3 class="text-xl font-semibold mb-4">Special Considerations</h3>         
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-pink-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-pink-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold">Children</h4>
+                    </div>
+                    <ul class="ml-6 list-disc space-y-2 text-sm">
+                        <li>Keep infants under 6 months out of direct sunlight</li>
+                        <li>Use SPF 50+ for children over 6 months</li>
+                        <li>Reapply sunscreen more frequently (every 1-2 hours)</li>
+                        <li>Use sun protective clothing and hats</li>
+                        <li>Schedule outdoor activities before 10 AM or after 4 PM</li>
+                    </ul>
+                </div>     
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-purple-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-purple-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold">Seniors</h4>
+                    </div>
+                    <ul class="ml-6 list-disc space-y-2 text-sm">
+                        <li>Use moisturizing sunscreen for drier skin</li>
+                        <li>Be aware of medications that increase sun sensitivity</li>
+                        <li>Pay special attention to thin skin areas</li>
+                        <li>Stay hydrated and seek shade frequently</li>
+                        <li>Get regular skin checks for suspicious spots</li>
+                    </ul>
+                </div>
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-green-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-green-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold">Sensitive Skin</h4>
+                    </div>
+                    <ul class="ml-6 list-disc space-y-2 text-sm">
+                        <li>Choose mineral sunscreens with zinc oxide or titanium dioxide</li>
+                        <li>Look for fragrance-free, hypoallergenic formulas</li>
+                        <li>Test new products on a small area first</li>
+                        <li>Consider UPF clothing as primary protection</li>
+                        <li>Consult a dermatologist for personalized recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card p-6">
+            <h3 class="text-xl font-semibold mb-4">Understanding UV Index</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white bg-opacity-10 rounded-lg">
+                    <thead>
+                        <tr class="border-b border-white border-opacity-20">
+                            <th class="p-3 text-left">UV Index</th>
+                            <th class="p-3 text-left">Risk Level</th>
+                            <th class="p-3 text-left">Recommended Protection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-white border-opacity-10">
+                            <td class="p-3"><span class="bg-green-500 text-white px-2 py-1 rounded">0-2</span></td>
+                            <td class="p-3">Low</td>
+                            <td class="p-3">Minimal protection required for normal activity</td>
+                        </tr>
+                        <tr class="border-b border-white border-opacity-10">
+                            <td class="p-3"><span class="bg-yellow-500 text-white px-2 py-1 rounded">3-5</span></td>
+                            <td class="p-3">Moderate</td>
+                            <td class="p-3">SPF 30+, hat, and sunglasses recommended</td>
+                        </tr>
+                        <tr class="border-b border-white border-opacity-10">
+                            <td class="p-3"><span class="bg-orange-500 text-white px-2 py-1 rounded">6-7</span></td>
+                            <td class="p-3">High</td>
+                            <td class="p-3">SPF 30+, protective clothing, reduce midday exposure</td>
+                        </tr>
+                        <tr class="border-b border-white border-opacity-10">
+                            <td class="p-3"><span class="bg-red-500 text-white px-2 py-1 rounded">8-10</span></td>
+                            <td class="p-3">Very High</td>
+                            <td class="p-3">SPF 50+, full protection, minimize sun exposure 10AM-4PM</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3"><span class="bg-purple-500 text-white px-2 py-1 rounded">11+</span></td>
+                            <td class="p-3">Extreme</td>
+                            <td class="p-3">Maximum protection, avoid outdoor activities during midday</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skin Type Quiz Tab Content -->
+    <div id="quiz" class="tab-content">
+        <div class="card p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-2">Fitzpatrick Skin Type Quiz</h2>
+            <p class="mb-6">Answer these questions to determine your skin type and get personalized UV protection recommendations.</p>
+            <div id="quiz-container">
+                <div class="quiz-question mb-8" id="question-1">
+                    <h3 class="text-xl font-semibold mb-3">1. What is your natural hair color?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="4">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Red or Light blonde</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="3">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Blonde</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="2">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Dark blonde or Light brown</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="1">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Dark brown</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="0">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Black</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-question mb-8" id="question-2">
+                    <h3 class="text-xl font-semibold mb-3">2. What is your eye color?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="4">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Light blue, Light gray, or Light green</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="3">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Blue, Gray, or Green</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="2">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Hazel or Light brown</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="1">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Dark brown</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="0">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Brownish black</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-question mb-8" id="question-3">
+                    <h3 class="text-xl font-semibold mb-3">3. How does your skin respond to the sun?</h3>
+                    <div class="grid grid-cols-1 gap-3">
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="4">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Always burns, never tans</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="3">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Usually burns, tans minimally</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="2">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Sometimes burns, gradually tans</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="1">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Rarely burns, tans easily</span>
+                            </div>
+                        </div>
+                        <div class="quiz-option p-4 rounded-lg cursor-pointer" data-points="0">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 rounded-full border-2 border-white mr-3"></div>
+                                <span>Never burns, tans darkly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="submit-quiz" class="bg-white text-purple-700 font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all btn">
+                    Get My Skin Type
+                </button>
+            </div>
+            <div id="quiz-results" class="hidden">
+                <div class="bg-white bg-opacity-20 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-2">Your Results</h3>
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-300 to-pink-100 mr-4 flex items-center justify-center text-pink-800 text-2xl font-bold">
+                            II
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold">Skin Type II</p>
+                            <p>Fair skin, burns easily, tans minimally</p>
+                        </div>
+                    </div> 
+                    <h4 class="text-lg font-semibold mt-6 mb-3">Your Personalized Recommendations</h4>
+                    <ul class="ml-6 list-disc space-y-2">
+                        <li>Use SPF 30-50 sunscreen daily, even on cloudy days</li>
+                        <li>Reapply sunscreen every 2 hours when outdoors</li>
+                        <li>Seek shade between 10 AM and 4 PM</li>
+                        <li>Wear protective clothing, wide-brimmed hats, and sunglasses</li>
+                        <li>Consider UPF-rated clothing for extended outdoor activities</li>
+                        <li>Check your skin regularly for any changes or new moles</li>
+                    </ul>
+                    <button id="retake-quiz" class="mt-6 bg-white text-purple-700 font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all btn">
+                        Retake Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reminder Tab Content -->
+    <div id="reminder" class="tab-content">
+        <div class="card p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4">Sunscreen Reminder</h2>
+            <p class="mb-6">Set up reminders to reapply sunscreen throughout the day. We'll notify you when it's time to reapply.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Set Reminder</h3>
+                    <div class="mb-4">
+                        <label class="block mb-2">First Application Time</label>
+                        <input type="time" class="w-full" id="first-application">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2">Reminder Interval</label>
+                        <select class="bg-white bg-opacity-20 text-white rounded-lg px-4 py-2 w-full appearance-none focus:outline-none" id="reminder-interval">
+                            <option value="2">Every 2 hours (recommended)</option>
+                            <option value="1.5">Every 1.5 hours (high activity/sweating)</option>
+                            <option value="3">Every 3 hours (indoor/low UV)</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block mb-2">End Time</label>
+                        <input type="time" class="w-full" id="end-time">
+                    </div>
+                    <button id="set-reminder" class="bg-white text-purple-700 font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all btn w-full">
+                        Set Reminder
+                    </button>
+                </div>
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Active Reminders</h3>
+                    <div id="no-reminders" class="text-center py-8">
+                        <svg class="w-16 h-16 mx-auto mb-4 opacity-60" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                        </svg>
+                        <p>No active reminders</p>
+                    </div>
+                    <div id="active-reminders" class="hidden">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg mb-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="font-semibold">Today</p>
+                                    <p>Every 2 hours (8:00 AM - 6:00 PM)</p>
+                                </div>
+                                <button class="text-red-300 hover:text-red-100">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-white border-opacity-20">
+                                <p class="text-sm">Next reminder: <span class="font-semibold">10:00 AM</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card p-6">
+            <h3 class="text-xl font-semibold mb-4">Sunscreen Tips</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-yellow-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-yellow-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold">Application</h4>
+                    </div>
+                    <p class="text-sm">Apply sunscreen 15-30 minutes before sun exposure to allow it to bind to your skin. Use enough to cover all exposed areas - most people only apply 25-50% of the recommended amount.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold">Water Resistance</h4>
+                    </div>
+                    <p class="text-sm">Water-resistant sunscreens are rated for either 40 or 80 minutes of protection while swimming or sweating. Reapply immediately after towel drying, regardless of the time elapsed.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-green-400 rounded-full p-2 mr-3">
+                            <svg class="w-6 h-6 text-green-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold">Storage</h4>
+                    </div>
+                    <p class="text-sm">Store sunscreen in a cool, dry place. Exposure to heat can break down the active ingredients. Most sunscreens have a shelf life of 2-3 years, but check the expiration date before using.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
