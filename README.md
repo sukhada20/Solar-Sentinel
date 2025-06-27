@@ -1,3 +1,7 @@
+## ***Agnirva Software Internship Program - Summer 2025's Capstone Project***
+
+
+
 # ☀️ Solar Sentinel – Real-Time UV Monitoring Dashboard
 
 Solar Sentinel is a Flask-based web application that helps users monitor **real-time UV index data**, understand their **sun exposure risk**, and receive **skin-type-based sunscreen reminders**. Powered by the [OpenUV API](https://www.openuv.io/) and deployed on [Render](https://render.com/), this app combines data science, frontend interactivity, and public health awareness.
